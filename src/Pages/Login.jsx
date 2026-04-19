@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import Input from './helpers/Input';
-import shop1 from '../assets/images/shop6.png'
+import Input from '../Components/helpers/Input';
+import shop1 from '../Assets/shop6.png'
 import { FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 // import { FaLinkedinIn, FaTwitter } from "react-icons/fa6";

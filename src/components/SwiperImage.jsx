@@ -1,4 +1,4 @@
-import jbl from '../assets/images/jbl product.png'
+import jbl from '../Assets/jbl product.png'
 // import headphones from '../assets/images/hadphone.jpg'
 // import earpods from '../assets/images/earpods.jpg'
 import Button from './helpers/Button';
@@ -17,7 +17,7 @@ import { useEffect, useState } from 'react';
 const SwiperImage = () => {
     //flash date
     const calculateTimeLeft = () => {
-        const targetDate = new Date("2024-2-30").getTime();
+        const targetDate = new Date("2026-7-30").getTime();
         const now = new Date().getTime();
         const difference = targetDate - now;
 

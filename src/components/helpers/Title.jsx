@@ -1,5 +1,5 @@
 
-const Header = ({ title }) => {
+const Title = ({ title }) => {
     return (
         <>
             <h2 className="fs-5 mb-4 header fw-bold d-flex align-items-center">
@@ -10,4 +10,4 @@ const Header = ({ title }) => {
     )
 }
 
-export default Header
+export default Title

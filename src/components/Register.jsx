@@ -2,10 +2,10 @@ import { Link } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc";
 // import Button from './helpers/Button';
 import Input from './helpers/Input';
-import shop1 from '../assets/images/shop1.png'
+import shop1 from '../Assets/shop1.png'
 
 
-const Sign = () => {
+const Register = () => {
 
     return (
         <div className="sign up mt-5 mb-5">
@@ -50,4 +50,4 @@ const Sign = () => {
     )
 }
 
-export default Sign
+export default Register

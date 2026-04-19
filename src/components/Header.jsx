@@ -11,7 +11,7 @@ import { useState } from 'react';
 // import { useState } from 'react'
 
 
-const Navbar = () => {
+const Header = () => {
     const [active, setActive] = useState(false);
 
     const handleClick = () => {
@@ -54,7 +54,7 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link fw-bold me-3" aria-current="page" to="/home">Home</Link>
+                                <Link className="nav-link fw-bold me-3" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link fw-bold me-3" to="/contact">Contact</Link>
@@ -90,4 +90,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Header

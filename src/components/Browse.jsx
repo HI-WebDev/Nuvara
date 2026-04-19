@@ -8,7 +8,7 @@ import { HiOutlineComputerDesktop } from 'react-icons/hi2'
 import { FaMobileScreen } from "react-icons/fa6";
 
 
-import Header from "./helpers/Header"
+import Header from "./helpers/Title"
 import Arrows from "./helpers/Arrows"
 import Box from "./helpers/Box"
 

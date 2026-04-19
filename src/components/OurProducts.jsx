@@ -1,9 +1,9 @@
-import Header from './helpers/Header'
+import { useState } from 'react'
+import Header from './helpers/Title'
 import Arrows from './helpers/Arrows'
 import MainProduct from './helpers/MainProduct'
 import Button from './helpers/Button'
-import pro1 from '../assets/images/pro1.png'
-import { useState } from 'react'
+import pro1 from '../Assets/pro1.png'
 
 const OurProducts = () => {
     const [isClicked, setClicked] = useState(false);
