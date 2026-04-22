@@ -1,3 +1,6 @@
+@use "./mixins" as m;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,400&family=Roboto&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -46,13 +49,12 @@ body {
 }
 
 //main product
-.product {
+.product,
+.flash-prd {
   .card {
-    // width: 18rem;
     border: none !important;
     .image {
       height: 17rem;
-      // background-color: #f5f5f5;
       background-color: #fff;
       border: 2px solid #eee;
       border-radius: 5px;
@@ -64,14 +66,15 @@ body {
         height: 15.5rem;
         position: relative;
         cursor: pointer;
-        // opacity: .8;
         transition: 0.4s ease-in-out;
         &.disable {
-          opacity: 0.25;
+          opacity: 0.5;
+        }
+        &.visible {
+          opacity: 1;
         }
         &:hover {
           padding: 2rem !important;
-          // opacity: 1;
         }
       }
       .discount {
@@ -91,13 +94,19 @@ body {
           height: 30px;
           border-radius: 50%;
         }
+        .heart,
+        .visibility {
+          @include m.flex-center();
+        }
         .heart {
-          color: #000 !important;
-          &.clicked {
-            color: red !important;
+          .empty {
+            color: #000 !important;
+            &:hover {
+              color: red !important;
+            }
           }
-          &:hover{
-            color: red !important;
+          .fill {
+            color: red;
           }
         }
       }
@@ -119,6 +128,9 @@ body {
       }
     }
     .card-body {
+      .card-title {
+        @include m.truncate(1);
+      }
       .card-price {
         span {
           color: #db4444;
@@ -145,8 +157,7 @@ body {
           border-radius: 50%;
           transition: 0.1s linear;
           &:hover {
-            border: 2px solid black;
-            padding: 9px;
+            border: 1px solid black;
           }
         }
         .sec {
@@ -219,7 +230,7 @@ body {
   border-bottom: 1.8px solid #aaa;
   border-radius: 0;
   color: #00000091;
-  font-weight:500;
+  font-weight: 500;
   &:focus {
     box-shadow: none;
     border-color: #aaa;
@@ -258,6 +269,5 @@ body {
     text-transform: capitalize;
     font-weight: 500;
     color: #00000080;
-
   }
 }

@@ -23,7 +23,7 @@ const deleteFromWishList = (product) => {
   };
 };
 
-const clearWishlist = (product) => {
+const clearWishlist = () => {
   return async (dispatch) => {
     try {
       dispatch(wishlistActions.clear());

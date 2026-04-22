@@ -1,6 +1,11 @@
 .swiperImage {
   .image {
     height: 500px;
+    width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
     .categories {
       color: #00ff66;
       top: 15%;

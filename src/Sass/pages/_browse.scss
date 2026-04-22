@@ -1,15 +1,19 @@
- .box{
-        border: 1.5px solid rgb(0, 0, 0,30%);
-        border-radius: 4px;
-        color: #000;
-        cursor: pointer;
-        transition: 0.3s linear;
-        &:hover{
-            background-color: #db4444;
-            color: #fff;
-        }
-        &.active{
-            // background-color: #db4444;
-            color: #fff;
-        }
-    }
+@use "../mixins" as m;
+
+.box {
+  border: 1.5px solid rgb(0, 0, 0, 30%);
+  border-radius: 4px;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s linear;
+  @include m.flex-center();
+  flex-direction: column;
+  &:hover {
+    background-color: #db4444;
+    color: #fff;
+  }
+  &.active {
+    background-color: #db4444;
+    color: #fff;
+  }
+}

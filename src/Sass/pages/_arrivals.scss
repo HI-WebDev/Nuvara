@@ -1,0 +1,65 @@
+@use "../mixins" as m;
+
+.arrivals {
+  .arrival-image {
+    &.img-1 {
+      @include m.respond(xs) {
+        height: 40vh;
+      }
+
+      @include m.respond(md) {
+        height: 62vh;
+      }
+      @include m.respond(xl) {
+        height: 70vh;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .second {
+    margin-bottom: 2vh;
+    .arrival-image {
+      &.img-2 {
+        @include m.respond(xs) {
+          height: 25vh;
+        }
+        @include m.respond(md) {
+          height: 30vh;
+        }
+        @include m.respond(xl) {
+          height: 34vh;
+        }
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .three {
+    @include m.respond(xs) {
+      height: 25vh;
+    }
+    @include m.respond(md) {
+      height: 30vh;
+    }
+    @include m.respond(xl) {
+      height: 34vh;
+    }
+    .arrival-image {
+      &.img-3,
+      &.img-4 {
+        height: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

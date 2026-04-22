@@ -1,120 +1,138 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-// import { useEffect, useState } from "react"
-// import { useDispatch, useSelector } from "react-redux"
-// import { fetchProducts } from '../products/productSlice';
-// import { FaRegHeart, FaHeart } from "react-icons/fa";
-// import { FaStar } from "react-icons/fa";
-// import { IoMdEye, IoIosEyeOff } from "react-icons/io";
-// import { addToCart } from "../cart/cartSlice";
+import { addPrdToWishlist, deleteFromWishList } from "../Redux/Api/wishlistApi";
+import { fetchProducts } from "../Redux/Slices/productSlice";
+import { addPrdToCart } from "../Redux/Api/cartsApi";
 
+import { FaHeart, FaStar, FaRegHeart } from "react-icons/fa";
+import { IoMdEye, IoIosEyeOff } from "react-icons/io";
 
+const Products = () => {
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
+  const wishlist = useSelector((state) => state.wishList);
 
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
-// const Products = () => {
-//   const data = useSelector((state) => state.products)
-//   const fourProducts = data.data.slice(0, 4);
-//   const dispatch = useDispatch()
+  // Handle Visibility
+  const [prdVisible, setPrdVisible] = useState("");
+  const [hiddenProducts, setHiddenProducts] = useState([]);
 
-//   useEffect(() => {
-//     dispatch(fetchProducts())
-//   }, [dispatch])
+  const handleProductVisiblity = (product) => {
+    setHiddenProducts((prev) =>
+      prev.includes(product.id)
+        ? prev.filter((id) => id !== product.id)
+        : [...prev, product.id],
+    );
+  };
 
-//   //handle click 
-//   const [isActive, setActive] = useState(false);
-//   const [isActive2, setActive2] = useState(false);
-//     const [isClicked, setClicked] = useState(false);
+  // Handle Toggle Wishlist And Cart
+  const handleTogglePrdToWishlist = (product) => {
+    const findProduct = wishlist?.find((item) => item?.id == product?.id);
 
-//   const handleClick = () => {
-//     setActive(!isActive)
-//   }
+    if (!findProduct) {
+      dispatch(addPrdToWishlist(product));
+    } else {
+      dispatch(deleteFromWishList(product));
+    }
+  };
 
-//   const handleClick2 = () => {
-//     setActive2(!isActive2)
-//   }
+  const handleAddPrdToCart = (product) => {
+    dispatch(addPrdToCart(product));
+  };
 
-//   const handleClicked = () => {
-//     setClicked(!isClicked)
-//   }
-//   return (
-//     <>
-//       {fourProducts.loading && <h1>Loading...</h1>}
-//       <div className="container">
-//         <div className="row">
-//           {fourProducts.map((product) => (
-//             <div key={product.id} className={isClicked ? "col" : "col d-none"}>
-//               <div className={`product `}>
-//                 <div className="card">
-//                   <div className="image position-relative">
-//                     <img src={product.image} className={isActive2 ? "card-img-top disable p-5" : "card-img-top p-5"}
-//                       alt="product1" />
-//                     <span className="discount position-absolute pt-1 pb-1 ps-2 pe-2" >
-//                       New
-//                     </span>
-//                     <div className="outils d-flex flex-column position-absolute">
-//                       <span className={isActive ? "heart clicked d-flex justify-content-center align-items-center mb-2"
-//                         : "heart  d-flex justify-content-center align-items-center mb-2"}
-//                         onClick={handleClick}>
-//                         {isActive ? <FaHeart /> : <FaRegHeart />}
-//                       </span>
-//                       <span className="d-flex fs-5 justify-content-center align-items-center"
-//                         onClick={handleClick2}>
-//                         {isActive2 ? <IoIosEyeOff /> : <IoMdEye />}
-//                       </span>
-//                     </div>
-//                     <div className="addCart btn position-absolute w-100 text-center pt-2 pb-1" >
-//                       <h1 className="fs-6 fw-bold text-capitalize p-0" onClick={() => dispatch(addToCart(product))} >
-//                         add to cart
-//                       </h1>
-//                     </div>
-//                   </div>
-//                   <div className="card-body p-0">
-//                     <h5 className="card-title mt-3">{product.title}</h5>
-//                     <div>
-//                       <p className="card-price d-flex mb-1">
-//                         <span className="fw-bold me-3">${product.price}</span>
-//                         <del className="fw-bold">${Math.floor(product.price + 20)}</del>
-//                       </p>
-//                       <p className="card-rate d-flex">
-//                         <span className="me-2 d-flex align-items-center fw-bold">
-//                           {product.rating.rate}
-//                           <FaStar className="ms-1" />
-//                         </span>
-//                         <span className="rating fw-bold">({product.rating.count})</span>
-//                       </p>
-//                     </div>
+  return (
+    <>
+      {products.loading && <h1>Loading...</h1>}
 
-//                     <div className={`colors position-absolute`}>
-//                       <span className="me-2">{product.rating.count >= 200 ? "" : null}</span>
-//                       <span className="sec">{product.rating.count >= 200 ? "" : null}</span>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
+      <div className="container mt-3 mt-lg-5 mb-5">
+        <h3 className="fw-bold fs-6 mb-0 text-black">
+          <span className="text-muted">Home</span> / Products
+        </h3>
 
-//           ))}
-//         </div>
-//       </div>
+        <div className="row mt-4 mt-lg-5">
+          {products?.map((product) => (
+            <div
+              key={product?.id}
+              className="col-12 col-md-6 col-lg-3 mb-4 mb-lg-3"
+            >
+              <div className="flash-prd">
+                <div className="card">
+                  <div className="image position-relative">
+                    <img
+                      src={product.image}
+                      className={`card-img-top p-5 ${hiddenProducts.includes(product.id) ? "disable" : ""}`}
+                      alt="product1"
+                    />
+                    <span className="discount position-absolute pt-1 pb-1 ps-2 pe-2">
+                      New
+                    </span>
+                    <div className="outils d-flex flex-column position-absolute">
+                      <span
+                        className="heart"
+                        onClick={() => handleTogglePrdToWishlist(product)}
+                      >
+                        {wishlist?.find((item) => item?.id === product?.id) ? (
+                          <FaHeart className="fill" />
+                        ) : (
+                          <FaRegHeart className="empty" />
+                        )}
+                      </span>
+                      <span
+                        className="visibility fs-5"
+                        onClick={() => handleProductVisiblity(product)}
+                      >
+                        {hiddenProducts.includes(product.id) ? (
+                          <IoIosEyeOff />
+                        ) : (
+                          <IoMdEye />
+                        )}
+                      </span>
+                    </div>
+                    <div className="addCart btn position-absolute w-100 text-center pt-2 pb-1">
+                      <h1
+                        className="fs-6 fw-bold text-capitalize p-0"
+                        onClick={() => handleAddPrdToCart(product)}
+                      >
+                        add to cart
+                      </h1>
+                    </div>
+                  </div>
+                  <div className="card-body p-0">
+                    <h5 className="card-title mt-3">{product.title}</h5>
+                    <div>
+                      <p className="card-price d-flex mb-1">
+                        <span className="fw-bold me-3">${product.price}</span>
+                        <del className="fw-bold">
+                          ${Math.floor(product.price + 20)}
+                        </del>
+                      </p>
+                      <p className="card-rate d-flex">
+                        <span className="me-2 d-flex align-items-center fw-bold">
+                          {product.rating.rate}
+                          <FaStar className="ms-1" />
+                        </span>
+                        <span className="rating fw-bold">
+                          ({product.rating.count})
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
+      {!products.loading && products.error ? (
+        <h1>Eroor : {products.error}</h1>
+      ) : null}
+    </>
+  );
+};
 
-
-
-//       {!data.loading && data.error ? <h1>Eroor : {data.error}</h1> : null}
-//     </>
-//   )
-// }
-
-// export default Products
-
-
-// {/* <div className="card mb-3" style={{ width: "18rem" }}>
-// <img src={product.image} className="card-img-top ms-auto me-auto mt-3 mb-4" alt="product" style={{ width: "190px", height: "180px" }} />
-// <div className="card-body">
-//   <h5 className="card-title text-center">{product.title}</h5> */}
-// {/* <p className="card-text">{product.description}</p> */ }
-// //   <div className="price d-flex justify-content-center align-items-center mt-3">
-// //     <span className="card-price me-2 text-center">{product.price}$</span>
-// //     <a href="#" className="btn btn-primary m" onClick={() => dispatch(addToCart(product))}>Add to cart</a>
-// //   </div>
-// // </div>
-// // </div>
+export default Products;

@@ -1,9 +1,16 @@
+@use "../mixins" as m;
+
 .wishlist {
-  .clear {
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    &:hover {
+  .wishlist-frame {
+    .clear {
+      @include m.flex-center();
       border: 1px solid #aaa;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      &:hover {
+        border: 1px solid #aaa;
+      }
     }
   }
 }

@@ -1,32 +1,29 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import { FaAngleRight, FaAngleDown } from "react-icons/fa6";
+
+import OurProducts from "../Components/OurProducts";
+import SwiperImage from "../Components/SwiperImage";
+import FlashSales from "../Components/FlashSales";
+import ThisMonth from "../Components/ThisMonth";
+import Services from "../Components/Services";
+import Arrivals from "../Components/Arrivals";
+import Browse from "../Components/Browse";
+
 import image1 from "../Assets/parfum.jpg";
 import image2 from "../Assets/ps5.jpg";
 import image3 from "../Assets/psp.png";
 import image4 from "../Assets/pc.jpg";
 import image5 from "../Assets/ip15.webp";
-import Arrivals from "../Components/Arrivals";
-import Browse from "../Components/Browse";
-import FlashSales from "../Components/FlashSales";
-import OurProducts from "../Components/OurProducts";
-import Services from "../Components/Services";
-import SwiperImage from "../Components/SwiperImage";
-import ThisMonth from "../Components/ThisMonth";
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-// import required modules
-import { Autoplay } from "swiper/modules";
-// import { Pagination } from 'swiper/modules';
+
 
 const Home = () => {
-  const images = [image1, image2, image3, image4, image5];
   const [active1, setActive1] = useState(false);
   const [active2, setActive2] = useState(false);
+
+  const images = [image1, image2, image3, image4, image5];
 
   const handleClick1 = () => {
     setActive1(!active1);
@@ -40,53 +37,41 @@ const Home = () => {
       <div className="home">
         <div className="container">
           <div className="row">
-            <div className="d-none d-lg-block col-lg-3">
-              <div className="aside pt-5 d-flex flex-column">
+            <div className="col-lg-3 d-none d-lg-block">
+              <div className="aside pt-4 d-flex flex-column">
                 <span
-                  className="mb-3 fw-bold d-flex align-items-center position-relative"
+                  className="aside-item d-flex align-items-center position-relative"
                   onClick={handleClick1}
                 >
                   Woman’s Fashion
                   {active1 ? (
-                    <FontAwesomeIcon
-                      className="angle position-absolute ms-2"
-                      icon={faAngleRight}
-                    />
+                    <FaAngleRight className="angle position-absolute ms-2" />
                   ) : (
-                    <FontAwesomeIcon
-                      className="angle position-absolute "
-                      icon={faAngleDown}
-                    />
+                    <FaAngleDown className="angle position-absolute " />
                   )}
                 </span>
                 <span
-                  className="mb-3 fw-bold d-flex align-items-center position-relative"
+                  className="aside-item d-flex align-items-center position-relative"
                   onClick={handleClick2}
                 >
                   Men’s Fashion
                   {active2 ? (
-                    <FontAwesomeIcon
-                      className="angle position-absolute ms-2"
-                      icon={faAngleRight}
-                    />
+                    <FaAngleRight className="angle position-absolute ms-2" />
                   ) : (
-                    <FontAwesomeIcon
-                      className="angle position-absolute "
-                      icon={faAngleDown}
-                    />
+                    <FaAngleDown className="angle position-absolute" />
                   )}
                 </span>
-                <span className="mb-3 fw-bold">Electronics</span>
-                <span className="mb-3 fw-bold">Home & Lifestyle</span>
-                <span className="mb-3 fw-bold">Medicine</span>
-                <span className="mb-3 fw-bold">Sports & Outdoor</span>
-                <span className="mb-3 fw-bold">Baby’s & Toys</span>
-                <span className="mb-3 fw-bold">Groceries & Pets</span>
-                <span className=" fw-bold">Health & Beauty</span>
+                <span className="aside-item">Electronics</span>
+                <span className="aside-item">Home & Lifestyle</span>
+                <span className="aside-item">Medicine</span>
+                <span className="aside-item">Sports & Outdoor</span>
+                <span className="aside-item">Baby’s & Toys</span>
+                <span className="aside-item">Groceries & Pets</span>
+                <span className="aside-item mb-0">Health & Beauty</span>
               </div>
             </div>
             <div className="col-12 col-lg-9">
-              <div className="image pt-5">
+              <div className="image pt-4">
                 <Swiper
                   spaceBetween={30}
                   centeredSlides={true}

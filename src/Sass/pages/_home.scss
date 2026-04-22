@@ -1,8 +1,12 @@
+@use "../_variables.scss" as v;
+
 .home {
   .aside {
     border-right: 1.5px solid #ddd;
-    span {
+    .aside-item {
       cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 1rem;
       &:hover {
         opacity: 0.8;
       }
@@ -13,32 +17,32 @@
   }
 }
 
-// Define breakpoints
-$breakpoint-xs: 0px;
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-
-@media (min-width: $breakpoint-xs) {
+@media (min-width: v.$breakpoint-xs) {
   .home {
     .image {
       .mySwiper {
         .swiper-slide {
-          height:100%;
+          height: 220px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }
   }
 }
 
-
-@media (min-width: $breakpoint-lg) {
+@media (min-width: v.$breakpoint-lg) {
   .home {
     .image {
       .mySwiper {
         .swiper-slide {
           height: 344px;
+          img {
+            max-width: 100%;
+            height: auto;
+          }
         }
       }
     }

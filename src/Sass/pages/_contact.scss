@@ -1,10 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,400&family=Roboto&display=swap");
+@use "../mixins" as m;
 
 .contact {
+  display: flex;
+  align-items: center;
   .infoContact {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    box-shadow: 0 1px 13px 0 rgb(0, 0, 0, 5%);
+    box-shadow: 0 1px 13px 0 rgb(0, 0, 0, 0.3);
     .phone {
       .icon {
         background-color: #db4444;
@@ -29,35 +31,46 @@
 
   .form {
     font-family: "Poppins", sans-serif;
-    box-shadow: 0 1px 13px 0 rgb(0, 0, 0, 5%);
+    box-shadow: 0 1px 13px 0 rgb(0, 0, 0, 0.3);
     .infos {
+      width: 100%;
+      gap: 1rem;
       input {
         background-color: #f5f5f5;
         border: none;
-        color: #000;
+        color: #111;
+
+        @include m.respond(xs) {
+          width: 100%;
+        };
+
+        @include m.respond(lg) {
+          width: calc(100% / 3);
+        }
 
         &::-webkit-input-placeholder {
-          color: #000;
+          color: #767676;
           font-weight: 400;
         }
         &::-moz-placeholder {
-          color: #000;
+          color: #767676;
           font-weight: 400;
         }
         &:-ms-input-placeholder {
-          color: #000;
+          color: #767676;
           font-weight: 400;
         }
         &::-ms-input-placeholder {
-          color: #000;
+          color: #767676;
           font-weight: 400;
         }
         &::placeholder {
-          color: #000;
+          color: #767676;
           font-weight: 400;
         }
         &:focus {
           box-shadow: none;
+          outline: none;
         }
       }
     }
@@ -68,6 +81,7 @@
       color: #000;
       &:focus {
         box-shadow: none;
+        outline: none;
       }
     }
 

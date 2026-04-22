@@ -4,8 +4,9 @@
   ul {
     li {
       cursor: pointer;
-      &:hover {
-        opacity: 0.82;
+      text-transform: capitalize;
+      &:not(:first-of-type):hover {
+        opacity: 0.85;
       }
     }
   }
@@ -13,12 +14,12 @@
   .socials {
     span {
       cursor: pointer;
-      &:hover{
-        opacity: .9;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+    .copyright {
+      border-top: 2px solid rgba(255, 255, 255, 0.35) !important;
     }
   }
-  .copyright {
-    border-top: 2px solid rgba(255, 255, 255, 0.35) !important;
-  }
-}
 }

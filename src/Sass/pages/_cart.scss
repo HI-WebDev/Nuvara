@@ -1,16 +1,47 @@
+@use "../mixins" as m;
+
 .cart {
   .card {
+    box-shadow: 0 3px 9px 0px #aaa;
     .card-body {
-      box-shadow: 0 3px 9px 0px #aaa;
+      .card-body-col {
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 16px;
+        @include m.respond(lg) {
+          justify-content: start;
+        }
+        img {
+          position: relative;
+          width: 4rem;
+          height: 4rem;
+        }
+        &.col-img,
+        &.col-title {
+          width: 100%;
+          @include m.respond(lg) {
+            width: fit-content;
+          }
+        }
+      }
       .del {
-        top: 5%;
-        left: 2%;
+        @include m.flex-center();
         background-color: #db4444;
-        border-radius: 50%;
+        cursor: pointer;
+        position: absolute;
+        top: 5%;
+        left: 1%;
         width: 20px;
         height: 20px;
-        opacity: 0.4;
-        cursor: pointer;
+        border-radius: 50%;
+        opacity: 0.8;
+        @include m.respond(lg) {
+          width: 15px;
+          height: 15px;
+          padding: 3px;
+        }
         &:hover {
           opacity: 1;
         }
@@ -20,20 +51,26 @@
 
   .helpers {
     .return {
-      border: 1.8px solid #aaa;
+      border: 1px solid #aaa;
       box-shadow: 0 1px 3px 0 #aaa;
+      font-weight: 600;
+      text-transform: capitalize;
     }
     .total {
-      border: 2px solid #000;
+      border: 1px solid #000;
       border-radius: 4px;
       box-shadow: 0 1px 2px 0 #aaa;
       .line {
         border-bottom: 2px solid #ddd;
-        h1{
-            color: #474646;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h6 {
+          color: #474646;
+          font-weight: bold;
+          text-transform: capitalize;
         }
       }
-
     }
   }
 }

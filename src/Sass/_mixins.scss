@@ -1,0 +1,32 @@
+@use "sass:map";
+
+/* Center content flexibly */
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Truncate text for product cards */
+@mixin truncate($lines: 2) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+/* Media query */
+$breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+@mixin respond($size) {
+  @media (min-width: map.get($breakpoints, $size)) {
+    @content;
+  }
+}

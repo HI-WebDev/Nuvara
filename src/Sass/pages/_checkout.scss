@@ -1,9 +1,19 @@
+@use "../mixins" as m;
+
 .checkout {
   .infos {
+    label {
+      color: #333;
+      text-transform: capitalize;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
     input {
-      border: none;
+      border: 1px solid black;
       border-radius: 4px;
-      background-color: #f5f5f5;
+      background-color: transparent;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
     }
     .form-check-input {
       background-color: #f5f5f5;
@@ -18,47 +28,71 @@
       border: none;
     }
   }
+
   .payment {
     .prod {
-      div {
-        cursor: pointer;
-        .quantity {
-          bottom: 0%;
-          left: 50%;
-        }
-        .delete {
-          width: 15px;
-          height: 15px;
-          opacity: 0;
-          border-radius: 50%;
-          background-color: #db4444;
-          color: #fff;
-          top: 0%;
-          left: 0%;
-          transition: 0.3s ease-in-out;
-        }
-        &:hover .delete {
-          opacity: 1;
-        }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      .prod-img {
+        position: relative;
+        display: flex;
+        width: 5rem;
+        height: 3rem;
+      }
+      .quantity {
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        margin: 0;
+        font-weight: bold;
+      }
+      .delete {
+        position: absolute;
+        @include m.flex-center();
+        background-color: #db4444;
+        color: #fff;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        top: -20%;
+        left: -10%;
       }
     }
 
     .line {
       border-bottom: 2px solid #ddd;
-      h1 {
+      margin-top: 1.5rem;
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h6 {
         color: #474646;
+        text-transform: capitalize;
+        font-weight: 700;
       }
     }
+
     .bank {
-      input {
+      .form-check-input {
         cursor: pointer;
         &:focus {
           box-shadow: none;
         }
       }
+      .form-check-label {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        margin-left: 0.25rem;
+      }
     }
 
     .coupon {
+      display: flex;
+      justify-content: space-between;
       input {
         border: 1px solid #000;
         border-radius: 4px;
@@ -92,6 +126,8 @@
         color: #fff;
         border: none;
         border-radius: 4px;
+        text-transform: capitalize;
+        font-weight: 700;
         &:hover {
           opacity: 0.9;
         }

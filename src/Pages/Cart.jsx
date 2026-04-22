@@ -1,14 +1,17 @@
-import { Link } from "react-router-dom";
-import Button from "../components/helpers/Button";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { deleteFromCart, clearCart } from "../Redux/Api/cartsApi";
+
 import { FaTrashAlt } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
+import Button from "../Components/Button";
+
 const Cart = () => {
-  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(cart);
+  const cart = useSelector((state) => state.cart);
+
   const percontageToSubstract = 2.5;
 
   const subtotal = cart.reduce((acc, product) => {
@@ -29,132 +32,97 @@ const Cart = () => {
   return (
     <div className="cart">
       <div className="container">
-        <section className="h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col-12">
-              <div
-                className={
-                  cart.length >= 1
-                    ? "d-flex justify-content-between align-items-center mt-5 mb-5"
-                    : "d-flex justify-content-between align-items-center mt-4 mb-0"
-                }
-              >
-                <h3 className="fw-bold fs-6 mb-0 text-black">
-                  <span className="text-muted">Home</span> / Cart
-                </h3>
-                <div
-                  className={cart.length >= 1 ? "d-block" : "d-none"}
-                  onClick={() => handleClearCart()}
-                >
-                  <Button title="Clear All" />
-                </div>
-              </div>
+        <div className="cart-title d-flex justify-content-between align-items-center mt-4 mb-4 mt-lg-5 mb-lg-5">
+          <h5 className="fw-bold mb-0">Your Cart</h5>
+          <div
+            className={cart.length == 0 && "d-none"}
+            onClick={() => handleClearCart()}
+          >
+            <Button title="Clear All" />
+          </div>
+        </div>
 
-              {cart.map((product) => {
-                return (
-                  <div key={product.id} className="card rounded-3 mb-4">
-                    <div className="card-body p-4">
-                      <div className="row d-flex justify-content-between align-items-center">
-                        <div className="col-12 col-lg-2 d-flex justify-content-center justify-content-lg-start fw-bold mb-2 mb-lg-0">
-                          <img
-                            src={product.image}
-                            className="img-fluid position-relative rounded-3"
-                            alt="Cotton T-shirt"
-                            style={{ width: "4.5rem", height: "4rem" }}
-                          />
-                          <span
-                            className="del position-absolute d-flex justify-content-center align-items-center"
-                            onClick={() => handleDeleteFromCart(product)}
-                          >
-                            <FaXmark color="white" />
-                          </span>
-                        </div>
-                        <div className="col-12 col-lg-3 ms-0 ps-0 fw-bold d-flex justify-content-center justify-content-lg-start text-center text-lg-start mb-2 mb-lg-0">
-                          <p className="lead fw-normal mb-2">{product.title}</p>
-                        </div>
-
-                        <div className="col-12 col-lg-2 offset-lg-1 d-flex justify-content-center justify-content-lg-start fw-bold mb-2 mb-lg-0">
-                          <h5 className="mb-0 fs-6 fw-bold">
-                            ${product.price}
-                          </h5>
-                        </div>
-
-                        <div className="col-12 col-lg-1 d-flex justify-content-center fw-bold mb-2 mb-lg-0">
-                          {product.quantity}
-                        </div>
-
-                        <div className="col-12 col-lg-1 offset-lg-1 d-flex justify-content-center fw-bold mb-2 mb-lg-0">
-                          <h5 className="mb-0 fs-6 fw-bold">
-                            ${product.price * product.quantity}
-                          </h5>
-                        </div>
-
-                        <div className="col-12 col-lg-1 text-center text-lg-end">
-                          <span
-                            className="text-danger fs-5"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => handleDeleteFromCart(product)}
-                          >
-                            <FaTrashAlt />
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-
-              <div className={cart.length >= 1 ? "helpers" : "d-none"}>
-                <div className="row mt-2 mt-lg-4">
-                  <div className="col-12 col-lg-7 mb-4 mb-lg-0">
-                    <Link
-                      to="/home"
-                      className=" return btn text-capitalize fs-6 p-2 ps-4 pe-4 fw-bold"
+        {cart.map((product) => {
+          return (
+            <div key={product.id} className="card mb-4">
+              <div className="card-body p-3 p-lg-4">
+                <div className="row d-flex justify-content-between align-items-center">
+                  <div className="card-body-col col-img mb-2 mb-lg-0">
+                    <img src={product.image} alt={product.title} />
+                    <span
+                      className="del"
+                      onClick={() => handleDeleteFromCart(product)}
                     >
-                      return to shop
-                    </Link>
+                      <FaXmark color="white" />
+                    </span>
                   </div>
 
-                  <div className="col-12 col-lg-5 mt-1 mt-lg-0">
-                    <div
-                      className={
-                        cart.length >= 1 ? "total p-3 pt-3 pb-4" : "d-none"
-                      }
+                  <div className="card-body-col col-title text-center text-lg-start mb-2 mb-lg-0">
+                    <p className="lead fw-normal mb-0">{product.title}</p>
+                  </div>
+
+                  <div className="card-body-col offset-lg-1 mb-2 mb-lg-0">
+                    <h6 className="mb-0">${product.price}</h6>
+                  </div>
+
+                  <div className="card-body-col mb-2 mb-lg-0">
+                    <h6 className="mb-0">{product.quantity}</h6>
+                  </div>
+
+                  <div className="card-body-col offset-lg-1 mb-2 mb-lg-0">
+                    <h6 className="mb-0">
+                      ${product.price * product.quantity}
+                    </h6>
+                  </div>
+
+                  <div className="card-body-col d-none d-lg-block">
+                    <span
+                      className="text-danger fs-5"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleDeleteFromCart(product)}
                     >
-                      <h1 className="fs-4 mb-3 text-capitalize">cart total</h1>
-                      <div className="line pb-2 d-flex justify-content-between align-items-center">
-                        <h1 className="fs-6 fw-bold text-capitalize">
-                          subtotal:
-                        </h1>
-                        <h1 className="fs-6 fw-bold">${subtotal.toFixed(2)}</h1>
-                      </div>
-                      <div className="line mt-4 pb-2  d-flex justify-content-between align-items-center">
-                        <h1 className="fs-6 fw-bold text-capitalize">
-                          shipping:
-                        </h1>
-                        <h1 className="fs-6 fw-bold text-capitalize">
-                          ${percontageToSubstract}
-                        </h1>
-                      </div>
-                      <div className="last mt-4 mb-4 d-flex justify-content-between align-items-center">
-                        <h1 className="fs-6 fw-bold text-capitalize">total:</h1>
-                        <h1 className="fs-6 fw-bold text-capitalize">
-                          ${total.toFixed(2)}
-                        </h1>
-                      </div>
-                      <Link
-                        className="text-center text-decoration-none d-flex justify-content-center"
-                        to="/checkout"
-                      >
-                        <Button title="Procees to checkout" />
-                      </Link>
-                    </div>
+                      <FaTrashAlt />
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
+          );
+        })}
+
+        <div className={`helpers ${cart.length == 0 && "d-none"}`}>
+          <div className="row mt-2 mt-lg-4">
+            <div className="col-12 col-lg-7 mb-4 mb-lg-0 d-none d-lg-block">
+              <Link to="/products" className="return btn p-2 ps-4 pe-4">
+                return to shop
+              </Link>
+            </div>
+
+            <div className="col-12 col-lg-5 mt-1 mt-lg-0">
+              <div className="total p-3 pb-4">
+                <h4 className="mb-3 text-capitalize">cart total</h4>
+                <div className="line pb-2">
+                  <h6>subtotal:</h6>
+                  <h1 className="fs-6 fw-bold">${subtotal.toFixed(2)}</h1>
+                </div>
+                <div className="line mt-4 pb-2">
+                  <h6>shipping:</h6>
+                  <h6>${percontageToSubstract}</h6>
+                </div>
+                <div className="line last mt-4 mb-4">
+                  <h6>total:</h6>
+                  <h6>${total.toFixed(2)}</h6>
+                </div>
+                <Link
+                  className="text-decoration-none d-flex justify-content-center"
+                  to="/checkout"
+                >
+                  <Button title="Proceed to checkout" />
+                </Link>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );

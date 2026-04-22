@@ -1,17 +1,12 @@
-import Header from "./helpers/Title";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
 import arriv1 from "../Assets/arriv1.png";
 import arriv2 from "../Assets/arriv2.png";
 import arriv3 from "../Assets/arriv3.png";
 import arriv4 from "../Assets/arriv4.png";
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-//import autoplay
-import { Autoplay } from "swiper/modules";
+import Header from "./Title";
 
 const Arrivals = () => {
   return (
@@ -19,7 +14,7 @@ const Arrivals = () => {
       <div className="container">
         <Header title="Featured" />
         <h1 className="fs-3 fw-bold mt-0 mb-4 mb-lg-5 text-center text-md-start">
-          New Arrival
+          New Arrivals
         </h1>
         <div className="row">
           <div className="col-12 col-md-6 mb-2 mb-lg-0">
@@ -30,23 +25,17 @@ const Arrivals = () => {
               autoplay={{ delay: 2500, disableOnInteraction: false }}
               pagination={{ clickable: true }}
               modules={[Autoplay]}
-              className="mySwiper img-fluid"
+              className="mySwiper"
             >
-              <SwiperSlide>
-                <div className="image">
-                  <img className="img-fluid" src={arriv1} alt="arriv1" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="image">
-                  <img className="img-fluid" src={arriv1} alt="arriv1" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="image">
-                  <img className="img-fluid" src={arriv1} alt="arriv1" />
-                </div>
-              </SwiperSlide>
+              {[1, 2, 3]?.map((i) => {
+                return (
+                  <SwiperSlide key={i}>
+                    <div className="arrival-image img-1">
+                      <img className="img-fluid" src={arriv1} alt="arrivals" />
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </div>
 
@@ -60,51 +49,47 @@ const Arrivals = () => {
                   autoplay={{ delay: 2600, disableOnInteraction: false }}
                   pagination={{ clickable: true }}
                   modules={[Autoplay]}
-                  className="mySwiper img-fluid"
+                  className="mySwiper"
                 >
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv2} alt="arriv2" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv2} alt="arriv2" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv2} alt="arriv2" />
-                    </div>
-                  </SwiperSlide>
+                  {[1, 2, 3]?.map((i) => {
+                    return (
+                      <SwiperSlide key={i}>
+                        <div className="arrival-image img-2">
+                          <img
+                            className="img-fluid"
+                            src={arriv2}
+                            alt="arrivals"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </div>
 
               {/* three and four swiper */}
-              <div className="three d-flex justify-content-between mt-2 mt-lg-3">
+              <div className="three d-flex justify-content-between gap-3">
                 <Swiper
                   spaceBetween={30}
                   centeredSlides={true}
                   autoplay={{ delay: 2700, disableOnInteraction: false }}
                   pagination={{ clickable: true }}
                   modules={[Autoplay]}
-                  className="mySwiper img-fluid"
+                  className="mySwiper"
                 >
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv3} alt="arriv3" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv3} alt="arriv3" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv3} alt="arriv3" />
-                    </div>
-                  </SwiperSlide>
+                  {[1, 2, 3]?.map((i) => {
+                    return (
+                      <SwiperSlide key={i}>
+                        <div className="arrival-image img-3">
+                          <img
+                            className="img-fluid"
+                            src={arriv3}
+                            alt="arrivals"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
 
                 <Swiper
@@ -113,23 +98,21 @@ const Arrivals = () => {
                   autoplay={{ delay: 2500, disableOnInteraction: false }}
                   pagination={{ clickable: true }}
                   modules={[Autoplay]}
-                  className="mySwiper img-fluid"
+                  className="mySwiper"
                 >
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv4} alt="arriv4" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv4} alt="arriv4" />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className="img-fluid">
-                      <img className="img-fluid" src={arriv4} alt="arriv4" />
-                    </div>
-                  </SwiperSlide>
+                  {[1, 2, 3]?.map((i) => {
+                    return (
+                      <SwiperSlide key={i}>
+                        <div className="arrival-image img-4">
+                          <img
+                            className="img-fluid"
+                            src={arriv4}
+                            alt="arrivals"
+                          />
+                        </div>
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </div>
             </div>

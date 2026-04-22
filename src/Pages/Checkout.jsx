@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFromCart } from "../Redux/Api/cartsApi";
-import Button from "../components/helpers/Button";
+
 import { HiMiniXMark } from "react-icons/hi2";
+
+import Button from "../Components/Button";
 import bank from "../Assets/bank.png";
 
 const Checkout = () => {
-  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   const percontageToSubstract = 2.5;
 
   const subtotal = cart.reduce((acc, product) => {
@@ -22,106 +24,42 @@ const Checkout = () => {
   };
 
   return (
-    <div className="checkout mt-5 mb-5 ">
+    <div className="checkout mt-4 mt-lg-5 mb-5">
       <div className="container">
-        <h3 className="fw-bold fs-6 mb-5 text-black">
-          <span className="text-muted">Cart</span> / CheckOut
-        </h3>
-        <form action="">
+        <h6 className="fw-bold mb-4 mb-lg-5">
+          <span className="text-muted">Cart</span> / Checkout
+        </h6>
+
+        <form>
           <div className="row d-flex justify-content-center justify-content-lg-between">
             <div className="col-12 col-md-10 col-lg-5 mb-5 mb-lg-0">
               <div className="infos d-flex flex-column">
-                <h1 className="text-capitalize text-center text-lg-start fs-2 mb-4">
+                <h4 className="text-capitalize text-center text-lg-start mb-4">
                   Billing details
-                </h1>
-                <label
-                  htmlFor="fname"
-                  className="text-capitalize text-black-50 fw-bold mb-1"
-                >
-                  first name
-                </label>
+                </h4>
+                <label>first name</label>
+                <input type="text" required placeholder="Enter first name" />
+
+                <label>street address</label>
                 <input
                   type="text"
-                  id="fname"
-                  className="me- mb-3 p-2"
+                  placeholder="Enter street address"
                   required
                 />
 
-                <label
-                  htmlFor="companyname"
-                  className="text-capitalize text-black-50 fw-bold mb-1"
-                >
-                  company name
-                </label>
-                <input
-                  type="text"
-                  id="companyname"
-                  className="me- mb-3 p-2"
-                  required
-                />
+                <label>Apartment, floor, etc. (optional)</label>
+                <input type="text" required placeholder="Enter apartement" />
 
-                <label
-                  htmlFor="streetadress"
-                  className="text-capitalize text-black-50 fw-bold mb-1"
-                >
-                  street address
-                </label>
-                <input
-                  type="text"
-                  id="streetadress"
-                  className="me- mb-3 p-2"
-                  required
-                />
+                <label>town/city</label>
+                <input type="text" required placeholder="Enter town or city" />
 
-                <label
-                  htmlFor="apartement"
-                  className="text-capitalize text-black-50 fw-bold mb-1"
-                >
-                  Apartment, floor, etc. (optional)
-                </label>
-                <input
-                  type="text"
-                  id="apartement"
-                  className="me- mb-3 p-2"
-                  required
-                />
+                <label>phone number</label>
+                <input type="tel" placeholder="Enter phone number" required />
 
-                <label
-                  htmlFor="city"
-                  className="text-capitalize text-black-50 fw-bold mb-1"
-                >
-                  town/city
-                </label>
-                <input
-                  type="text"
-                  id="city"
-                  className="me- mb-3 p-2"
-                  required
-                />
-
-                <label
-                  htmlFor="phone"
-                  className="text-capitalize text-black-50 fw-bold mb-1"
-                >
-                  phone number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="me- mb-3 p-2"
-                  required
-                />
-
-                <label
-                  htmlFor="mail"
-                  className="text-capitalize text-black-50 fw-bold mb-1"
-                >
-                  email address
-                </label>
+                <label>email address</label>
                 <input
                   type="email"
-                  id="mail"
-                  className="me- mb-3 p-2"
+                  placeholder="Enter email address"
                   required
                 />
 
@@ -129,7 +67,6 @@ const Checkout = () => {
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    value=""
                     id="defaultCheck1"
                   />
                   <label className="form-check-label" htmlFor="defaultCheck1">
@@ -143,52 +80,41 @@ const Checkout = () => {
               <div className="payment d-flex flex-column">
                 {cart.map((product) => {
                   return (
-                    <div
-                      key={product}
-                      className="prod mb-4 d-flex justify-content-between align-items-center"
-                    >
-                      <div
-                        className="d-flex position-relative"
-                        style={{ width: "5.5rem", height: "3rem" }}
-                      >
+                    <div className="prod mb-4" key={product.id}>
+                      <div className="prod-img">
                         <img
                           src={product.image}
                           className="img-fluid"
-                          alt="dd"
+                          alt={product.title}
                         />
                         <span
-                          className="delete position-absolute d-flex justify-content-center align-items-center"
+                          className="delete"
                           onClick={() => handleDeleteFromCart(product)}
                         >
                           <HiMiniXMark />
                         </span>
-                        <h1 className="quantity m-0 position-absolute fs-6 fw-bold">
-                          <HiMiniXMark className="me-0 fw-bold" />
+
+                        <h6 className="quantity">
+                          <HiMiniXMark />
                           {product.quantity}
-                        </h1>
+                        </h6>
                       </div>
-                      <h1 className="fs-6 fw-bold">${product.price}</h1>
+                      <h6 className="fw-bold">${product.price}</h6>
                     </div>
                   );
                 })}
 
-                <div className="line mt-2 pb-2  d-flex justify-content-between align-items-center">
-                  <h1 className="fs-6 fw-bold text-capitalize">Subtotal:</h1>
-                  <h1 className="fs-6 fw-bold text-capitalize">
-                    ${subtotal.toFixed(2)}
-                  </h1>
+                <div className="line">
+                  <h6>Subtotal:</h6>
+                  <h6>${subtotal.toFixed(2)}</h6>
                 </div>
-                <div className="line mt-4 pb-2  d-flex justify-content-between align-items-center">
-                  <h1 className="fs-6 fw-bold text-capitalize">shipping:</h1>
-                  <h1 className="fs-6 fw-bold text-capitalize">
-                    ${percontageToSubstract}
-                  </h1>
+                <div className="line">
+                  <h6>shipping:</h6>
+                  <h6>${percontageToSubstract}</h6>
                 </div>
-                <div className="mt-4 mb-4  d-flex justify-content-between align-items-center">
-                  <h1 className="fs-6 fw-bold text-capitalize">total:</h1>
-                  <h1 className="fs-6 fw-bold text-capitalize">
-                    ${total.toFixed(2)}
-                  </h1>
+                <div className="line mb-4">
+                  <h6>total:</h6>
+                  <h6>${total.toFixed(2)}</h6>
                 </div>
 
                 <div className="bank form-check mb-3">
@@ -196,10 +122,9 @@ const Checkout = () => {
                     className="form-check-input"
                     type="radio"
                     name="flexRadioDefault"
-                    id="flexRadioDefault1"
                   />
                   <label
-                    className="form-check-label d-flex justify-content-between ms-1 fw-bold"
+                    className="form-check-label"
                     htmlFor="flexRadioDefault1"
                   >
                     Bank
@@ -214,29 +139,29 @@ const Checkout = () => {
                     className="form-check-input"
                     type="radio"
                     name="flexRadioDefault"
-                    id="flexRadioDefault1"
                   />
                   <label
-                    className="form-check-label ms-1 fw-bold"
-                    htmlFor="flexRadioDefault1"
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault2"
                   >
                     Cash on delivery
                   </label>
                 </div>
 
-                <div className="coupon d-flex justify-content-between mb-4">
+                <div className="coupon mb-4">
                   <input
                     className="col-lg-7"
                     type="text"
                     name="coupon"
                     id="coupon"
-                    placeholder="Coupon Code"
+                    placeholder="Enter coupon"
                   />
                   <Button title="Apply coupon" />
                 </div>
-                <div className="submit mt-1">
+
+                <div className="submit">
                   <input
-                    className="text-capitalize fw-bold p-2 ps-4 pe-4"
+                    className="p-2 ps-4 pe-4"
                     type="submit"
                     value="place order"
                   />
