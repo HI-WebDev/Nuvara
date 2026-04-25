@@ -11,10 +11,10 @@ import Services from "../Components/Services";
 import Arrivals from "../Components/Arrivals";
 import Browse from "../Components/Browse";
 
-import image1 from "../Assets/parfum.jpg";
-import image2 from "../Assets/ps5.jpg";
-import image3 from "../Assets/psp.png";
-import image4 from "../Assets/pc.jpg";
+import image1 from "../Assets/parfum.webp";
+import image2 from "../Assets/ps5.webp";
+import image3 from "../Assets/psp.webp";
+import image4 from "../Assets/pc.webp";
 import image5 from "../Assets/ip15.webp";
 
 

@@ -4,7 +4,7 @@ import { deleteFromCart } from "../Redux/Api/cartsApi";
 import { HiMiniXMark } from "react-icons/hi2";
 
 import Button from "../Components/Button";
-import bank from "../Assets/bank.png";
+import bank from "../Assets/banks.webp";
 
 const Checkout = () => {
   const cart = useSelector((state) => state.cart);

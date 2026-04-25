@@ -9,9 +9,9 @@ import { VscGift } from "react-icons/vsc";
 import { FaStoreAlt } from "react-icons/fa";
 import { FaDollarSign, FaSackDollar } from "react-icons/fa6";
 
-import shoping from "../Assets/shoping.png";
-import emp1 from "../Assets/emp1.png";
-import emp2 from "../Assets/emp2.png";
+import shoping from "../Assets/about.webp";
+import emp1 from "../Assets/emp1.webp";
+import emp2 from "../Assets/emp2.webp";
 
 const About = () => {
   const teamData = [

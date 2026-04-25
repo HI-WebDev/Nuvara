@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import Input from "../Components/Input";
-import shop1 from "../Assets/shop1.png";
+import shop1 from "../Assets/register.webp";
 
 import { FcGoogle } from "react-icons/fc";
 

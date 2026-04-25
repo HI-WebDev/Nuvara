@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
-import jbl from "../Assets/jbl product.png";
+import jbl from "../Assets/jbl.webp";
 
 import Button from "./Button";
 

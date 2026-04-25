@@ -1,10 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
-import arriv1 from "../Assets/arriv1.png";
-import arriv2 from "../Assets/arriv2.png";
-import arriv3 from "../Assets/arriv3.png";
-import arriv4 from "../Assets/arriv4.png";
+import arriv1 from "../Assets/arrival1.webp";
+import arriv2 from "../Assets/arrival2.webp";
+import arriv3 from "../Assets/arrival3.webp";
+import arriv4 from "../Assets/arrival4.webp";
 
 import Header from "./Title";
 
