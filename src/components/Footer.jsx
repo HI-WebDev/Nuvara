@@ -7,7 +7,7 @@ import {
   RiLinkedinLine,
 } from "react-icons/ri";
 
-export const Footer = () => {
+const Footer = () => {
   const date = new Date().getFullYear();
 
   return (
@@ -91,3 +91,5 @@ export const Footer = () => {
     </div>
   );
 };
+
+export default Footer;
