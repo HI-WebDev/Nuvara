@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import Input from "../Components/Input";
+import Input from "../components/Input";
 import shop1 from "../Assets/register.webp";
 
 import { FcGoogle } from "react-icons/fc";

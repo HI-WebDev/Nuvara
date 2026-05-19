@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
 
-import EmployerCard from "../Components/EmployerCard";
-import Services from "../Components/Services";
-import Service from "../Components/Service";
+import EmployerCard from "../components/EmployerCard";
+import Services from "../components/Services";
+import Service from "../components/Service";
 
 import { VscGift } from "react-icons/vsc";
 import { FaStoreAlt } from "react-icons/fa";

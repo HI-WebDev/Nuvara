@@ -3,7 +3,7 @@ import { deleteFromCart } from "../Redux/Api/cartsApi";
 
 import { HiMiniXMark } from "react-icons/hi2";
 
-import Button from "../Components/Button";
+import Button from "../components/Button";
 import bank from "../Assets/banks.webp";
 
 const Checkout = () => {

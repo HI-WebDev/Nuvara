@@ -6,7 +6,7 @@ import { deleteFromCart, clearCart } from "../Redux/Api/cartsApi";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
-import Button from "../Components/Button";
+import Button from "../components/Button";
 
 const Cart = () => {
   const dispatch = useDispatch();

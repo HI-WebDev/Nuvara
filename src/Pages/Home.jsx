@@ -3,13 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { FaAngleRight, FaAngleDown } from "react-icons/fa6";
 
-import OurProducts from "../Components/OurProducts";
-import SwiperImage from "../Components/SwiperImage";
-import FlashSales from "../Components/FlashSales";
-import ThisMonth from "../Components/ThisMonth";
-import Services from "../Components/Services";
-import Arrivals from "../Components/Arrivals";
-import Browse from "../Components/Browse";
+import OurProducts from "../components/OurProducts";
+import SwiperImage from "../components/SwiperImage";
+import FlashSales from "../components/FlashSales";
+import ThisMonth from "../components/ThisMonth";
+import Services from "../components/Services";
+import Arrivals from "../components/Arrivals";
+import Browse from "../components/Browse";
 
 import image1 from "../Assets/parfum.webp";
 import image2 from "../Assets/ps5.webp";

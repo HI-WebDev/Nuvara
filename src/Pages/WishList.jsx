@@ -13,8 +13,8 @@ import { FaStar, FaHeart, FaRegHeart, FaTrashAlt } from "react-icons/fa";
 import { IoIosEyeOff, IoMdEye } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
 
-import Header from "../Components/Title";
-import Button from "../Components/Button";
+import Header from "../components/Title";
+import Button from "../components/Button";
 
 const WishList = () => {
   const dispatch = useDispatch();
