@@ -22,7 +22,7 @@ const Header = () => {
           <h2 className="disc-title fs-6 lh-base mb-0 ms-auto me-auto">
             Summer Sale on All Swimwear with Free Express Shipping - 50% Off!
           </h2>
-          <span className="disc-lang text-light dropdown-toggle">English</span>
+          {/* <span className="disc-lang text-light dropdown-toggle">English</span> */}
         </div>
       </div>
 

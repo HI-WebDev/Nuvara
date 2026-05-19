@@ -5,11 +5,7 @@ import "swiper/css/navigation";
 import "./Sass/style.css";
 
 function App() {
-  return (
-    <>
-      <Layout />
-    </>
-  );
+  return <Layout />;
 }
 
 export default App;

@@ -55,9 +55,9 @@ const About = () => {
   return (
     <div className="about mt-3 mt-lg-5 mb-5">
       <div className="container">
-        <h3 className="fw-bold fs-6 mb-0 text-black">
+        {/* <h3 className="fw-bold fs-6 mb-0 text-black">
           <span className="text-muted">Home</span> / About
-        </h3>
+        </h3> */}
 
         <div className="row mt-4 mt-lg-5 mb-lg-5 pb-lg-5 d-flex align-items-center text-center text-lg-start">
           <div className="col-12 col-lg-6">
@@ -77,10 +77,7 @@ const About = () => {
                 that fits every lifestyle. Whether you're upgrading your home,
                 refreshing your wardrobe, or discovering something new, we aim
                 to make shopping easy, reliable, and enjoyable. <br />
-                <br />
-                Our mission is to deliver more than just products—we deliver
-                convenience, trust, and a modern shopping experience designed
-                for you.
+         
               </p>
             </div>
           </div>
@@ -91,7 +88,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="row mt-5 pt-3 pt-lg-5 pb-0 pb-lg-5 mb-lg-5">
+        {/* <div className="row mt-5 pt-3 pt-lg-5 pb-0 pb-lg-5 mb-lg-5">
           <div className="col-12 col-md-6 col-lg-3 mb-3">
             <Service
               bord="1.5px solid #aaa"
@@ -162,7 +159,7 @@ const About = () => {
           </Swiper>
         </div>
 
-        <Services />
+        <Services /> */}
       </div>
     </div>
   );

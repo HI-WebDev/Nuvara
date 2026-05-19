@@ -1,13 +1,10 @@
-
 const Title = ({ title }) => {
-    return (
-        <>
-            <h2 className="fs-5 mb-4 header fw-bold d-flex align-items-center">
-                <span className="before fs-6 me-2"></span>
-                {title}
-            </h2>
-        </>
-    )
-}
+  return (
+    <h5 className="header-title d-flex align-items-center gap-2 mb-4">
+      <span className="before"></span>
+      {title}
+    </h5>
+  );
+};
 
-export default Title
+export default Title;

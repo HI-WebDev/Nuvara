@@ -11,10 +11,11 @@ body {
   padding: 0;
 }
 
-.header {
+.header-title {
   color: #db4444;
+  font-weight: 700;
 }
-.header .before {
+.header-title .before {
   background-color: #db4444;
   width: 12px;
   border-radius: 3px;
