@@ -10,9 +10,7 @@ const initialState = {
 export const fetchProducts = createAsyncThunk(
   "productSlice/fetchProducts",
   async () => {
-    return axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => res.data);
+    return axios.get(import.meta.env.VITE_API_KEY).then((res) => res.data);
   },
 );
 
