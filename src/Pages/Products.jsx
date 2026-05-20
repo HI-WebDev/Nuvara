@@ -13,9 +13,21 @@ const Products = () => {
   const { products } = useSelector((state) => state.products);
   const wishlist = useSelector((state) => state.wishList);
 
+  // NEW: Filter state
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // NEW: Extract unique categories from products
+  const categories = ["all", ...new Set(products.map((p) => p.category))];
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  // Filter products based on selected category
+  const filteredProducts =
+    selectedCategory === "all"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
   // Handle Visibility
   const [prdVisible, setPrdVisible] = useState("");
@@ -53,8 +65,25 @@ const Products = () => {
           <span className="text-muted">Home</span> / Products
         </h3>
 
+        {/* NEW: Category Filter Section */}
+        <div className="row mt-4">
+          <div className="col-12">
+            <div className="category-filter">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
+                >
+                  {cat === "all" ? "All Categories" : cat}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <div className="row mt-4 mt-lg-5">
-          {products?.map((product) => (
+          {filteredProducts.map((product) => (
             <div
               key={product?.id}
               className="col-12 col-md-6 col-lg-3 mb-4 mb-lg-3"
@@ -64,7 +93,9 @@ const Products = () => {
                   <div className="image position-relative">
                     <img
                       src={product.image}
-                      className={`card-img-top p-5 ${hiddenProducts.includes(product.id) ? "disable" : ""}`}
+                      className={`card-img-top p-5 ${
+                        hiddenProducts.includes(product.id) ? "disable" : ""
+                      }`}
                       alt="product1"
                     />
                     <span className="discount position-absolute pt-1 pb-1 ps-2 pe-2">
@@ -129,7 +160,7 @@ const Products = () => {
       </div>
 
       {!products.loading && products.error ? (
-        <h1>Eroor : {products.error}</h1>
+        <h1>Error : {products.error}</h1>
       ) : null}
     </>
   );

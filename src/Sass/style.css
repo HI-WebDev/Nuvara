@@ -342,6 +342,50 @@ body {
     height: auto;
   }
 }
+.category-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.category-filter .filter-btn {
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #6c757d;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.25s ease-in-out;
+  position: relative;
+}
+.category-filter .filter-btn:hover {
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+.category-filter .filter-btn:active {
+  transform: translateY(1px);
+}
+.category-filter .filter-btn.active {
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 576px) {
+  .category-filter {
+    gap: 0.5rem;
+  }
+  .category-filter .filter-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
 .flash .timing .time .days::before {
   content: "Days";
   position: absolute;
